@@ -13,5 +13,10 @@
 ##  39   39   E    5  1998-01-26  1998
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+import pandas as pd
+df=df=pd.read_csv('tbl0.tsv', sep='\t')
+fecha=df['_c3']
+anio=[row.split('-')for row in fecha]
+r=df.assign(ano= [row[0]for row in anio])
+print(r)
 

@@ -21,5 +21,23 @@
 ##  12,3
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+datos=open('data.csv','r').readlines()
+datos=[row.split('\t') for row in datos]
+fechas= [row[2] for row in datos]
+fechas
+mes=[row.split('-')for row in fechas]
+mes= sorted([row[1]for row in mes])
+mes
+
+diccionario={}
+
+for mes in mes:
+    if mes in diccionario:
+        diccionario[mes]=diccionario[mes]+1
+    else:
+        diccionario[mes]=1
+
+for i in diccionario:
+    print(i + ',' + str(diccionario[i]))
+
 

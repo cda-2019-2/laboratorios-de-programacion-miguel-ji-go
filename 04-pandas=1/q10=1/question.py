@@ -15,5 +15,12 @@
 ##  39   39                    ggg:3,hhh:8,jjj:5
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+import pandas as pd
+df = pd.read_csv("tbl2.tsv",sep = '\t')
+
+df['_c5'] = df['_c5a'] + ':' + df['_c5b'].apply(str)
+df = df.sort_values(by=['_c5'])
+df = df.groupby('_c0')['_c5'].apply(','.join).reset_index()
+df.columns = ['_c0','lista']
+print(df)
 

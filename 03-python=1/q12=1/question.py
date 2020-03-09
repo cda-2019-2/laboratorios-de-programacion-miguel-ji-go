@@ -15,7 +15,20 @@
 ##  E,16
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+datos=open('data.csv','r').readlines()
+datos=[row.split('\t') for row in datos]
+col=[[row[0], row[4].split(',')]for row in datos]
+col
+
+lista=[]
+
+for i in col:
+  suma=0
+  for j in i[1]:
+   j= j.split(':')
+   letra=i[0]
+   suma = suma + int(j[1])
+  print(letra,str(suma),sep=',')
 
 
 

@@ -16,6 +16,14 @@
 ##  E,3,3
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+datos=open('data.csv','r').readlines()
+datos=[row.split('\t') for row in datos]
+columnas=[[row[0],row[3],row[4]] for row in datos]
+
+for i in columnas:
+    a=i[0]
+    b=len(i[1].split(','))
+    c=len(i[2].split(','))
+    print(a,b,c,sep=',') 
 
 

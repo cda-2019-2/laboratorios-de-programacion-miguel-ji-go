@@ -13,4 +13,7 @@
 ##  39   39   E    5  1998-01-26    44
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+import pandas as pd
+df=pd.read_csv('tbl0.tsv', sep='\t')
+r=df.assign(suma=df['_c0'] + df['_c2'])
+print(r)

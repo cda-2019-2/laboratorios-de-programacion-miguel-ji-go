@@ -16,7 +16,12 @@
 ##  Name: _c5b, dtype: int64
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+import pandas as pd
+df1 = pd.read_csv("tbl0.tsv",sep = '\t')
+df2 = pd.read_csv("tbl2.tsv",sep = '\t')
+df= pd.merge(df1,df2)
+r=df.groupby('_c1')['_c5b'].sum()
+print(r)
 
 
 

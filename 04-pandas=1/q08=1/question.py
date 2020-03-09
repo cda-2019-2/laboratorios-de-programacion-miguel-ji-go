@@ -15,5 +15,11 @@
 ##  4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
 ## 
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+import pandas as pd
+df=pd.read_csv('tbl0.tsv', sep='\t')
+df=df.sort_values(by=['_c2'])
+df['_c2']=df['_c2'].apply(str)
+df= df.groupby('_c1')['_c2'].apply(':'.join).reset_index()
+df.columns=['_c0','lista']
+print(df)
 

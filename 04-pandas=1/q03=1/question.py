@@ -15,5 +15,8 @@
 ##  Name: _c2, dtype: int64
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+import pandas as pd
+df= pd.read_csv('tbl0.tsv', sep='\t')
+r=df.groupby('_c1')['_c2'].max()
+print(r)
 

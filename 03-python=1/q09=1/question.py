@@ -18,7 +18,23 @@
 ##  jjj,18
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+datos=open('data.csv','r').readlines()
+datos=[row.split('\t') for row in datos]
+col5=[(row[4]) for row in datos]
+col5
+p= [(row.split(",")) for row in col5]
+p= [j for row in p for j in row]
+p= [row.split (":") for row in p]
+clave=sorted(set([row[0] for row in p]))
+clave
+
+for i in clave:
+ cuenta = 0
+ for j in p:
+   letra=j[0]
+   if i == letra:
+    cuenta= cuenta + 1
+ print(i,cuenta,sep=',') 
 
 
 

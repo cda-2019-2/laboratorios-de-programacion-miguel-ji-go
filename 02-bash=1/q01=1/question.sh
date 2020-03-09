@@ -22,4 +22,25 @@
 ##  data3.csv,3,B,ddd:2
 ##
 ##  >>> Escriba su codigo a partir de este punto <<<
-##
+Archivos=$(ls *.csv)
+for file in ${Archivos[*]}; do 
+    if [ -f 1.csv ]; then
+        cat $file | sed '/^[[:space:]]*$/d' | nl | sed 's/[[:space:]]//g' | sed "s/\([0-9]\)\([A-Z]\)/"${file}\,"\1,\2,/g" >>1.csv
+    else
+        cat $file | sed '/^[[:space:]]*$/d' | nl | sed 's/[[:space:]]//g' | sed "s/\([0-9]\)\([A-Z]\)/"${file}\,"\1,\2,/g" >1.csv
+    fi
+done
+filename=1.csv
+while read -r line; do 
+    m=$(echo $line | awk '{print NF}' FS=",")
+    i=4
+    for ((i; i<=m; i++)); do 
+        VAR1="$(echo $line | cut -d"," -f1)",""
+        VAR2="$(echo $line | cut -d"," -f2)",""
+        VAR3="$(echo $line | cut -d"," -f3)",""
+        VAR4=$(echo $line | cut -d"," -f$i)
+        VAR5="$VAR1$VAR2$VAR3$VAR4"
+        echo "$VAR5"
+    done
+done <$filename
+rm 1.csv
